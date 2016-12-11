@@ -5,7 +5,7 @@ class Another extends React.Component {
   render(){
     return(
       <div>
-        This is my Another Pages....
+        This is my Another Pages.... HOT RELOAD TEST
       </div>
     )
   }

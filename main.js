@@ -1,8 +1,8 @@
 import express from 'express'
 const app = express()
 
-app.get('/', (req, res) => {
-  res.send('5555')
-})
+import ssr from './ssr.js'
+
+app.use(ssr)
 
 app.listen(3000)
