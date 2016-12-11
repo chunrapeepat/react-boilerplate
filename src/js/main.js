@@ -1,14 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 
-class App extends React.Component {
-  render(){
-    return(
-      <div>
-        Hello World, Yeah Yeah Yeah!
-      </div>
-    )
-  }
-}
+import Routes from './routes.js'
 
-ReactDOM.render(<App/>, document.getElementById('app'))
+ReactDOM.render(<Routes/>, document.getElementById('app'))
