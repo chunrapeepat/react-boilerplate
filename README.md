@@ -12,6 +12,8 @@ npm run build
 
 <h2>Feature</h2>
 <li>Install ReactJS ReactDOM, Config <b>webpack.config.js</b>, Babel Config</li>
+<li>Install React Router and Redux</li>
+<li>Making a server-side rendering</li>
 
 <h2>Install</h2>
 ```
