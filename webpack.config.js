@@ -22,7 +22,11 @@ const client = {
     filename: "client.min.js"
   },
   plugins: debug
-    ? []
+    ? [
+        new webpack.DefinePlugin({
+          "process.env": { NODE_ENV: JSON.stringify("production") }
+        })
+      ]
     : [
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurenceOrderPlugin(),
@@ -58,6 +62,11 @@ const server = {
     path: __dirname,
     filename: "server.js"
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      "process.env": { NODE_ENV: JSON.stringify("production") }
+    })
+  ],
   target: "node"
 };
 

@@ -4,7 +4,7 @@ const app = express();
 
 import ssr from "./ssr.js";
 app.get("/client.min.js", (req, res) => {
-  res.sendfile("./src/client.min.js");
+  res.sendFile(path.resolve("./src/client.min.js"));
 });
 app.use(ssr);
 app.listen(8080);
