@@ -1,8 +1,9 @@
-import express from 'express'
-const app = express()
+import express from "express";
+import path from "path";
+const app = express();
 
-import ssr from './ssr.js'
+import ssr from "./ssr.js";
 
-app.use(ssr)
+app.use(ssr);
 
-app.listen(3000)
+app.listen(3000);

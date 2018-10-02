@@ -3,10 +3,11 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import { renderToString } from "react-dom/server";
 import { RouterContext, match } from "react-router";
+import { ServerStyleSheet } from "styled-components";
 
 import routes from "./src/js/routes.js";
 
-const renderPage = (components, initialState) => {
+const renderPage = (components, styles, initialState) => {
   return `
   <!DOCTYPE html>
   <html>
@@ -15,6 +16,7 @@ const renderPage = (components, initialState) => {
       <title>React & Redux</title>
     </head>
     <body>
+      ${styles}
       <div id="app">${components}</div>
       <script>
         window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
@@ -30,6 +32,7 @@ const SimpleReducers = (state, actions) => {
 };
 
 export default function(req, res) {
+  const sheet = new ServerStyleSheet();
   const store = createStore(SimpleReducers, { name: "Chun Rapeepat" });
   match(
     {
@@ -41,10 +44,13 @@ export default function(req, res) {
         res.status(200).send(
           renderPage(
             renderToString(
-              <Provider store={store}>
-                <RouterContext {...renderProps} />
-              </Provider>
+              sheet.collectStyles(
+                <Provider store={store}>
+                  <RouterContext {...renderProps} />
+                </Provider>
+              )
             ),
+            sheet.getStyleTags(),
             store.getState()
           )
         );
